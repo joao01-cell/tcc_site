@@ -4,323 +4,492 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Faça o Bem: contribua com alimentos não perecíveis e ajude a transformar vidas.">
+  <title>Faça o Bem | Alimentos não perecíveis</title>
 
-  <title>Faça o Bem</title>
-
-  <!-- Fontes -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <link
-    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap"
-    rel="stylesheet">
-
-  <!-- CSS -->
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
+  <a class="skip-link" href="#conteudo">Ir para o conteúdo principal</a>
 
-  <!-- INÍCIO -->
-  <section class="hero" id="inicio">
+  <div class="auth-shell" id="authShell" aria-live="polite">
+    <section class="auth-card" id="registerScreen" aria-labelledby="registerTitle" hidden>
+      <div class="auth-header">
+        <div class="auth-logo" aria-hidden="true">
+          <span class="logo-head"></span>
+          <span class="logo-hands"></span>
+        </div>
+        <div>
+          <h1 id="registerTitle">Criar conta</h1>
+          <p>Preencha os dados abaixo para se cadastrar.</p>
+        </div>
+      </div>
 
-    <div class="hero-content">
-
-      <div class="hero-text">
-
-        <p class="eyebrow">FAÇA A DIFERENÇA</p>
-
-        <h1>
-          Faça o bem.<br>
-          <em>Transforme vidas.</em>
-        </h1>
-
-        <p>
-          Ajude pessoas que precisam. Sua contribuição pode
-          transformar vidas e criar novas oportunidades.
-        </p>
-
-        <div class="hero-buttons">
-
-          <button class="btn btn-primary" id="helpButton">
-            Quero ajudar
-          </button>
-
-          <button class="btn btn-link" id="projectButton">
-            Conheça nosso projeto →
-          </button>
-
+      <form class="auth-form" id="registerForm" novalidate>
+        <div class="auth-field">
+          <label for="registerFullName">Nome completo</label>
+          <input id="registerFullName" name="fullName" type="text" autocomplete="name" required>
+          <small class="auth-error" id="registerFullNameError"></small>
         </div>
 
-      </div>
-
-
-      <!-- IMAGEM -->
-
-      <div class="hero-image">
-
-        <img
-          src="https://images.unsplash.com/photo-1559234938-b60fff04894d?auto=format&fit=crop&w=900&q=80"
-          alt="Idosos recebendo cuidados em uma casa de acolhimento"
-        >
-
-        <div class="image-overlay"></div>
-
-        <div class="image-caption">
-          <small>JUNTOS SOMOS MAIS FORTES</small>
-          <strong>Pequenas atitudes mudam vidas.</strong>
+        <div class="auth-field">
+          <label for="registerEmail">E-mail</label>
+          <input id="registerEmail" name="email" type="email" autocomplete="email" required>
+          <small class="auth-error" id="registerEmailError"></small>
         </div>
 
-        <button class="heart" id="heartButton">
-          ♥
-        </button>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- CATEGORIAS -->
-
-  <section class="categories" id="causas">
-
-    <div class="section-inner">
-
-      <div class="category-layout">
-
-        <div class="section-intro">
-
-          <h2>
-            Escolha uma<br>
-            causa.
-          </h2>
-
-          <p>
-            Existem muitas formas de ajudar.
-            Escolha uma causa que você acredita
-            e faça parte dessa mudança.
-          </p>
-
+        <div class="auth-field">
+          <label for="registerPassword">Senha</label>
+          <input id="registerPassword" name="password" type="password" autocomplete="new-password" required aria-describedby="passwordHelp">
+          <small class="password-help" id="passwordHelp">Use 8+ caracteres, uma letra maiúscula, um número e um símbolo (!@#$).</small>
+          <small class="auth-error" id="registerPasswordError"></small>
         </div>
 
-
-        <div class="category-grid">
-
-          <button class="category-card active">
-
-            <div class="category-icon">01</div>
-
-            <div>
-              <h3>Educação</h3>
-
-              <p>
-                Ajude crianças e jovens a terem
-                acesso à educação.
-              </p>
-            </div>
-
-            <span class="check">✓</span>
-
-          </button>
-
-
-          <button class="category-card">
-
-            <div class="category-icon">02</div>
-
-            <div>
-              <h3>Alimentação</h3>
-
-              <p>
-                Contribua para levar alimentos
-                a famílias.
-              </p>
-            </div>
-
-          </button>
-
-
-          <button class="category-card">
-
-            <div class="category-icon">03</div>
-
-            <div>
-              <h3>Saúde</h3>
-
-              <p>
-                Apoie projetos que ajudam
-                pessoas em situação de necessidade.
-              </p>
-            </div>
-
-          </button>
-
-
-          <button class="category-card">
-
-            <div class="category-icon">04</div>
-
-            <div>
-              <h3>PIX</h3>
-
-              <p>
-                Faça sua contribuição de forma
-                rápida, simples e segura.
-              </p>
-            </div>
-
-          </button>
-
+        <div class="auth-field">
+          <label for="confirmPassword">Confirmar senha</label>
+          <input id="confirmPassword" name="confirmPassword" type="password" autocomplete="new-password" required>
+          <small class="auth-error" id="confirmPasswordError"></small>
         </div>
 
+        <button class="auth-submit" type="submit">Cadastrar</button>
+        <p class="auth-feedback" id="registerFeedback" role="alert" aria-live="assertive"></p>
+      </form>
+
+      <div class="auth-divider" aria-hidden="true"><span>ou</span></div>
+      <p class="auth-switch">Já tem uma conta? <button type="button" id="showLogin">Faça login</button></p>
+    </section>
+
+    <section class="auth-card" id="loginScreen" aria-labelledby="loginTitle">
+      <div class="auth-header">
+        <div class="auth-logo" aria-hidden="true">
+          <span class="logo-head"></span>
+          <span class="logo-hands"></span>
+        </div>
+        <div>
+          <h1 id="loginTitle">Entrar</h1>
+          <p>Acesse sua conta para continuar.</p>
+        </div>
       </div>
 
-    </div>
-
-  </section>
-
-
-  <!-- ORGANIZAÇÃO -->
-
-  <section class="organizations" id="organizacoes">
-
-    <div class="section-inner">
-
-      <div class="organizations-heading">
-
-        <h2>
-          Organização<br>
-          que precisa de você.
-        </h2>
-
-        <p>
-          Conheça a organização e veja como
-          sua contribuição pode fazer diferença.
-        </p>
-
-      </div>
-
-
-      <div class="org-grid">
-
-        <div class="org-card selected">
-
-          <span class="org-number">01</span>
-
-          <h3>Lar Bussocaba</h3>
-
-          <p>
-            São Paulo - SP
-          </p>
-
-          <button
-            class="org-button"
-            data-org="Lar Bussocaba">
-            Saiba mais →
-          </button>
-
-          <span class="recommended">
-            RECOMENDADA
-          </span>
-
+      <form class="auth-form" id="loginForm" novalidate>
+        <div class="auth-field">
+          <label for="loginFullName">Nome completo</label>
+          <input id="loginFullName" name="fullName" type="text" autocomplete="name" required>
+          <small class="auth-error" id="loginFullNameError"></small>
         </div>
 
-      </div>
-
-
-      <!-- DOAÇÃO -->
-
-      <div class="cta" id="doacao">
-
-        <div class="cta-decoration"></div>
-
-        <div class="cta-content">
-
-          <div>
-
-            <p class="eyebrow light">
-              SUA AJUDA IMPORTA
-            </p>
-
-            <h2>
-              Vamos transformar vidas juntos?
-            </h2>
-
-            <p>
-              Qualquer contribuição pode fazer a diferença.
-            </p>
-
-          </div>
-
-          <button id="donationButton">
-            Fazer uma doação →
-          </button>
-
+        <div class="auth-field">
+          <label for="loginEmail">E-mail</label>
+          <input id="loginEmail" name="email" type="email" autocomplete="email" required>
+          <small class="auth-error" id="loginEmailError"></small>
         </div>
 
-      </div>
+        <div class="auth-field">
+          <label for="loginPassword">Senha</label>
+          <input id="loginPassword" name="password" type="password" autocomplete="current-password" required>
+          <small class="auth-error" id="loginPasswordError"></small>
+        </div>
 
-    </div>
+        <button class="auth-submit" type="submit">Entrar</button>
+        <p class="auth-feedback" id="loginFeedback" role="alert" aria-live="assertive"></p>
+      </form>
 
-  </section>
-
-
-  <!-- RODAPÉ -->
-
-  <footer>
-
-    <div class="footer-inner">
-
-      <div class="brand">
-        Faça o <span>Bem</span>
-      </div>
-
-      <p>
-        © 2026 Faça o Bem. Todos os direitos reservados.
-      </p>
-
-      <button id="topButton">
-        Voltar ao topo ↑
-      </button>
-
-    </div>
-
-  </footer>
-
-
-  <!-- MODAL -->
-
-  <div class="modal" id="modal">
-
-    <div class="modal-box">
-
-      <button class="modal-close" id="closeModal">
-        ×
-      </button>
-
-      <h2 id="modalTitle">
-        Faça uma doação
-      </h2>
-
-      <p id="modalText">
-        Sua contribuição ajuda a transformar vidas.
-      </p>
-
-      <button class="btn btn-primary" id="copyPix">
-        Copiar PIX
-      </button>
-
-    </div>
-
+      <div class="auth-divider" aria-hidden="true"><span>ou</span></div>
+      <p class="auth-switch">Ainda não tem uma conta? <button type="button" id="showRegister">Cadastre-se aqui</button></p>
+    </section>
   </div>
 
+  <main id="conteudo" hidden>
+    <div class="main-topbar">
+      <span class="main-brand">Faça o <strong>Bem</strong></span>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-pressed="false" aria-label="Ativar modo escuro">
+        <span class="theme-icon moon" aria-hidden="true">☾</span>
+        <span class="theme-track" aria-hidden="true"><span class="theme-thumb"></span></span>
+        <span class="theme-icon sun" aria-hidden="true">☀</span>
+      </button>
+    </div>
+    <!-- Hero original -->
+    <section class="hero" id="inicio" aria-labelledby="hero-title">
+      <div class="hero-content">
+        <div class="hero-text">
+          <p class="eyebrow">Faça a diferença</p>
+          <h1 id="hero-title">Faça o bem.<br><em>Transforme vidas.</em></h1>
+          <p>Ajude pessoas que precisam. Sua contribuição pode transformar vidas e criar novas oportunidades.</p>
 
-  <!-- JAVASCRIPT -->
+          <div class="hero-buttons">
+            <button class="btn btn-primary" id="helpButton" type="button">Quero ajudar</button>
+            <button class="btn btn-link" id="projectButton" type="button">Conheça nosso projeto →</button>
+          </div>
+        </div>
+
+        <div class="hero-image">
+          <img src="https://images.unsplash.com/photo-1559234938-b60fff04894d?auto=format&fit=crop&w=900&q=80" alt="Duas pessoas idosas caminhando em uma área verde" loading="eager">
+          <div class="image-overlay" aria-hidden="true"></div>
+          <div class="image-caption">
+            <small>Juntos somos mais fortes</small>
+            <strong>Pequenas atitudes mudam vidas.</strong>
+          </div>
+          <button class="heart" id="heartButton" type="button" aria-label="Marcar esta causa como favorita" aria-pressed="false">♡</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Categorias originais -->
+    <section class="categories" id="causas" aria-labelledby="causas-title">
+      <div class="section-inner">
+        <div class="category-layout">
+          <div class="section-intro">
+            <h2 id="causas-title">Escolha uma<br>causa.</h2>
+            <p>Existem muitas formas de ajudar. Escolha uma causa em que você acredita e faça parte dessa mudança.</p>
+            <p class="selection-status" id="selectionStatus" role="status" aria-live="polite">Causa selecionada: Educação</p>
+          </div>
+
+          <div class="category-grid" aria-label="Causas disponíveis">
+            <button class="category-card active" type="button" data-cause="Educação" aria-pressed="true">
+              <span class="category-icon" aria-hidden="true">01</span>
+              <span><strong>Jogos interativos</strong><br><span class="category-description">Ajude crianças e jovens a terem acesso à educação.</span></span>
+              <span class="check" aria-hidden="true">✓</span>
+            </button>
+
+            <button class="category-card" type="button" data-cause="Alimentação" aria-pressed="false">
+              <span class="category-icon" aria-hidden="true">02</span>
+              <span><strong>Alimentação</strong><br><span class="category-description">Contribua para levar alimentos a famílias.</span></span>
+            </button>
+
+           
+
+            <button class="category-card" type="button" data-cause="PIX" aria-pressed="false">
+              <span class="category-icon" aria-hidden="true">03</span>
+              <span><strong>PIX</strong><br><span class="category-description">Faça sua contribuição de forma rápida, simples e segura.</span></span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Nova seção: alimentos não perecíveis -->
+    <section class="food-donation" id="alimentacao" aria-labelledby="food-title">
+      <div class="section-inner">
+        <div class="food-layout">
+          <aside class="food-info-panel" aria-label="Informações de segurança e atendimento">
+            <div class="food-brand" aria-label="JV">JV</div>
+
+            <div class="food-warning">
+              <strong>Aviso importante</strong>
+              <p>Para garantir a segurança e a qualidade dos alimentos, nossa ONG não aceita doações vencidas pelos Correios ou por transportadoras. Durante o transporte pode danificar os alimentos ou embalagens.</p>
+            </div>
+
+            <button class="help-button" id="foodHelpButton" type="button">
+              <span class="help-icon" aria-hidden="true">◖</span>
+              Preciso de ajuda
+            </button>
+          </aside>
+
+          <div class="food-main-panel">
+            <header class="food-heading">
+              <h2 class="food-pill" id="food-title">Alimentos não perecíveis</h2>
+              <p>Alimentos não perecíveis são alimentos que não estragam facilmente e podem ser armazenados por bastante tempo, geralmente sem precisar de geladeira.</p>
+            </header>
+
+            <div class="food-content-row">
+              <div class="food-reference" aria-labelledby="food-reference-title">
+                <h3 id="food-reference-title">Esses que são os alimentos não perecíveis</h3>
+                <ul class="food-list" aria-label="Exemplos de alimentos não perecíveis">
+                  <li><span class="food-icon" aria-hidden="true">🌾</span><span>Grãos e cereais</span></li>
+                  <li><span class="food-icon" aria-hidden="true">🫘</span><span>Leguminosas</span></li>
+                  <li><span class="food-icon" aria-hidden="true">🍝</span><span>Massas e farinhas</span></li>
+                  <li><span class="food-icon" aria-hidden="true">🥫</span><span>Enlatados e conservas</span></li>
+                  <li><span class="food-icon" aria-hidden="true">🧂</span><span>Temperos e básicos</span></li>
+                  <li><span class="food-icon" aria-hidden="true">🧃</span><span>Bebidas e complementos</span></li>
+                  <li><span class="food-icon" aria-hidden="true">🍪</span><span>Biscoitos e alimentos prontos</span></li>
+                  <li><span class="food-icon" aria-hidden="true">🥣</span><span>Alimentos de longa duração</span></li>
+                </ul>
+                <p class="food-reference-note">As imagens são apenas referências visuais. Clique em “Doar” para informar o alimento que deseja entregar.</p>
+              </div>
+
+              <div class="food-action-panel">
+                <p>Escolha uma data e informe os dados da sua contribuição.</p>
+                <button class="donate-button food-open-button" id="openFoodDonationButton" type="button">Doar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Nova seção: doação de jogos interativos -->
+    <section class="games-donation" id="jogos" aria-labelledby="games-title">
+      <div class="section-inner games-card">
+        <header class="games-header">
+          <h2 id="games-title">Doação de jogos interativos</h2>
+          <p>Escolha um jogo que você quer doar</p>
+        </header>
+
+        <div class="games-layout">
+          <div class="games-selection">
+            <h3>Jogos para doar</h3>
+            <div class="game-grid" aria-label="Jogos disponíveis para doação">
+              <button class="game-card" type="button" data-game="Dominó" aria-pressed="false">
+                <span class="game-icon" aria-hidden="true">🁫</span>
+                <span>Dominó</span>
+              </button>
+              <button class="game-card" type="button" data-game="Baralho" aria-pressed="false">
+                <span class="game-icon" aria-hidden="true">🃏</span>
+                <span>Baralho</span>
+              </button>
+              <button class="game-card" type="button" data-game="Bingo" aria-pressed="false">
+                <span class="game-icon" aria-hidden="true">🎱</span>
+                <span>Bingo</span>
+              </button>
+              <button class="game-card" type="button" data-game="Caça-palavras" aria-pressed="false">
+                <span class="game-icon" aria-hidden="true">🔤</span>
+                <span>Caça-palavras</span>
+              </button>
+              <button class="game-card" type="button" data-game="Jogo da memória" aria-pressed="false">
+                <span class="game-icon" aria-hidden="true">🧠</span>
+                <span>Jogo da memória</span>
+              </button>
+              <button class="game-card" type="button" data-game="Palavras cruzadas" aria-pressed="false">
+                <span class="game-icon" aria-hidden="true">✣</span>
+                <span>Palavras cruzadas</span>
+              </button>
+            </div>
+            <p class="game-selection-status" id="gameSelectionStatus" role="status" aria-live="polite">Nenhum jogo selecionado.</p>
+          </div>
+
+          <div class="games-form-panel">
+            <p>Preencha as informações abaixo para seguir com a doação.</p>
+            <form class="game-form" id="gameDonationForm" novalidate>
+              <div class="game-field">
+                <label for="gameDonorName">Nome completo</label>
+                <input id="gameDonorName" name="donorName" type="text" placeholder="Seu nome" autocomplete="name" required>
+                <small class="game-error" id="gameDonorNameError"></small>
+              </div>
+
+              <div class="game-form-row">
+                <div class="game-field">
+                  <label for="gameQuantity">Quantidade</label>
+                  <input id="gameQuantity" name="quantity" type="number" min="1" step="1" placeholder="1" required>
+                  <small class="game-error" id="gameQuantityError"></small>
+                </div>
+                <div class="game-field">
+                  <label for="gameDate">Data</label>
+                  <input id="gameDate" name="date" type="date" required>
+                  <small class="game-error" id="gameDateError"></small>
+                </div>
+              </div>
+
+              <div class="game-field">
+                <label for="selectedGame">Qual jogo você escolhe?</label>
+                <input id="selectedGame" name="game" type="text" placeholder="Selecione um jogo ao lado" readonly required>
+                <small class="game-error" id="selectedGameError"></small>
+              </div>
+
+              <div class="game-field">
+                <label for="gamePaymentMethod">Forma de pagamento</label>
+                <select id="gamePaymentMethod" name="paymentMethod" required>
+                  <option value="">Selecione uma opção</option>
+                  <option value="PIX">PIX</option>
+                  <option value="Cartão">Cartão</option>
+                  <option value="Dinheiro">Dinheiro na entrega</option>
+                </select>
+                <small class="game-error" id="gamePaymentMethodError"></small>
+              </div>
+
+              <div class="game-field">
+                <label for="gamePixKey">Chave PIX <span id="gamePixLabel">(opcional)</span></label>
+                <input id="gamePixKey" name="pixKey" type="text" value="doacao.facobem@exemplo.com" placeholder="doacao.facobem@exemplo.com" autocomplete="off">
+                <small class="game-error" id="gamePixKeyError"></small>
+              </div>
+
+              <div class="game-field">
+                <label for="gamePhone">Número de contato</label>
+                <input id="gamePhone" name="phone" type="tel" placeholder="(11) 99999-9999" autocomplete="tel" required>
+                <small class="game-error" id="gamePhoneError"></small>
+              </div>
+
+              <button class="game-submit" type="submit">Doar</button>
+              <p class="game-feedback" id="gameFeedback" role="alert" aria-live="assertive"></p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Organização e CTA originais -->
+    <section class="organizations" id="organizacoes" aria-labelledby="organizacoes-title">
+      <div class="section-inner">
+        <div class="organizations-heading">
+          <h2 id="organizacoes-title">Organização<br>que precisa de você.</h2>
+          <p>Conheça a organização e veja como sua contribuição pode fazer diferença.</p>
+        </div>
+
+        <div class="org-grid">
+          <article class="org-card selected" tabindex="0" aria-label="Organização Lar Bussocaba">
+            <span class="org-number">01</span>
+            <h3>Lar Bussocaba</h3>
+            <p>São Paulo - SP</p>
+            <button class="org-button" type="button" data-org="Lar Bussocaba">Saiba mais →</button>
+            <span class="recommended">Recomendada</span>
+          </article>
+        </div>
+
+        <div class="cta" id="doacao" aria-labelledby="cta-title">
+          <div class="cta-decoration" aria-hidden="true"></div>
+          <div class="cta-content">
+            <div>
+              <p class="eyebrow light">Sua ajuda importa</p>
+              <h2 id="cta-title">Vamos transformar vidas juntos?</h2>
+              <p>Qualquer contribuição pode fazer a diferença.</p>
+            </div>
+            <button id="donationButton" type="button">Fazer uma doação →</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer hidden>
+    <div class="footer-inner">
+      <div class="brand">Faça o <span>Bem</span></div>
+      <p>© 2026 Faça o Bem. Todos os direitos reservados.</p>
+      <button id="topButton" type="button">Voltar ao topo ↑</button>
+    </div>
+  </footer>
+
+  <!-- Modal original de PIX/organização -->
+  <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalText" hidden>
+    <div class="modal-box" role="document">
+      <button class="modal-close" id="closeModal" type="button" aria-label="Fechar janela">×</button>
+      <h2 id="modalTitle">Faça uma doação</h2>
+      <p id="modalText">Sua contribuição ajuda a transformar vidas. Use a chave PIX abaixo para realizar a transferência.</p>
+
+      <div class="pix-area">
+        <label class="pix-label" for="modalPixKey">Chave PIX</label>
+        <div class="pix-box">
+          <input id="modalPixKey" type="text" value="doacao.facobem@exemplo.com" readonly aria-describedby="pixNote">
+          <button class="copy-pix" id="copyPix" type="button">Copiar PIX</button>
+        </div>
+        <p class="demo-note" id="pixNote">Chave PIX fictícia para demonstração. Ela não recebe pagamentos reais.</p>
+      </div>
+
+      <button class="btn btn-primary modal-finish" id="finishDonation" type="button">Confirmar contribuição</button>
+    </div>
+  </div>
+
+  <!-- Modal de agradecimento do formulário de alimentos -->
+  <div class="modal" id="foodSuccessModal" role="dialog" aria-modal="true" aria-labelledby="foodSuccessTitle" aria-describedby="foodSuccessText" hidden>
+    <div class="modal-box success-box" role="document">
+      <div class="success-icon" aria-hidden="true">✓</div>
+      <h2 id="foodSuccessTitle">Obrigado pela sua doação!</h2>
+      <p id="foodSuccessText">Sua contribuição foi registrada para a data escolhida. Juntos, podemos transformar vidas.</p>
+      <button class="btn btn-primary" id="returnHomeButton" type="button">Voltar ao início</button>
+    </div>
+  </div>
+
+  <!-- Modal sobreposto do formulário de alimentos -->
+  <div class="modal food-form-modal" id="foodFormModal" role="dialog" aria-modal="true" aria-labelledby="foodFormTitle" aria-describedby="foodFormText" hidden>
+    <div class="modal-box food-form-box" role="document">
+      <button class="modal-close" id="closeFoodForm" type="button" aria-label="Fechar formulário de doação">×</button>
+      <h2 id="foodFormTitle">Doação de alimentos</h2>
+      <p id="foodFormText">Preencha as informações abaixo para agendar sua doação de alimentos não perecíveis.</p>
+
+      <form class="donation-form" id="foodDonationForm" novalidate>
+        <div class="form-card-title">Produto</div>
+
+        <div class="form-field full-field">
+          <label for="product">Produto <span aria-hidden="true">*</span></label>
+          <input id="product" name="product" type="text" placeholder="Ex.: arroz" autocomplete="off" required>
+          <small class="field-error" id="productError"></small>
+        </div>
+
+        <div class="form-row">
+          <div class="form-field">
+            <label for="quantity">Quantidade <span aria-hidden="true">*</span></label>
+            <div class="input-with-unit">
+              <input id="quantity" name="quantity" type="number" min="1" step="1" placeholder="5" inputmode="numeric" required>
+              <select id="quantityUnit" name="quantityUnit" aria-label="Unidade da quantidade">
+                <option value="kg">kg</option>
+                <option value="unidades">un.</option>
+                <option value="litros">L</option>
+              </select>
+            </div>
+            <small class="field-error" id="quantityError"></small>
+          </div>
+
+          <div class="form-field">
+            <label for="donationDate">Data da doação <span aria-hidden="true">*</span></label>
+            <input id="donationDate" name="donationDate" type="date" required>
+            <small class="field-error" id="donationDateError"></small>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label for="price">Preço do alimento (R$) <span aria-hidden="true">*</span></label>
+          <input id="price" name="price" type="number" min="0.01" step="0.01" placeholder="23,99" inputmode="decimal" required>
+          <small class="field-error" id="priceError"></small>
+        </div>
+
+        <div class="form-field">
+          <label for="paymentMethod">Método de pagamento <span aria-hidden="true">*</span></label>
+          <select id="paymentMethod" name="paymentMethod" required>
+            <option value="">Selecione uma opção</option>
+            <option value="PIX">PIX</option>
+            <option value="Cartão">Cartão</option>
+            <option value="Dinheiro">Dinheiro na entrega</option>
+          </select>
+          <small class="field-error" id="paymentMethodError"></small>
+        </div>
+
+        <div class="form-field">
+          <label for="pixKey">Chave PIX <span class="optional-label" id="pixRequiredLabel">(obrigatória para PIX)</span></label>
+          <input id="pixKey" name="pixKey" type="text" value="doacao.facobem@exemplo.com" placeholder="Ex.: telefone ou e-mail" autocomplete="off">
+          <small class="field-error" id="pixKeyError"></small>
+        </div>
+
+        <div class="form-field">
+          <label for="donorName">Nome <span aria-hidden="true">*</span></label>
+          <input id="donorName" name="donorName" type="text" placeholder="Seu nome" autocomplete="name" required>
+          <small class="field-error" id="donorNameError"></small>
+        </div>
+
+        <div class="form-field">
+          <label for="phone">Telefone <span aria-hidden="true">*</span></label>
+          <input id="phone" name="phone" type="tel" placeholder="(11) 99999-9999" autocomplete="tel" required>
+          <small class="field-error" id="phoneError"></small>
+        </div>
+
+        <button class="donate-button" type="submit">Doar</button>
+        <p class="form-feedback" id="formFeedback" role="alert" aria-live="assertive"></p>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal de agradecimento da doação de jogos -->
+  <div class="modal" id="gameSuccessModal" role="dialog" aria-modal="true" aria-labelledby="gameSuccessTitle" aria-describedby="gameSuccessText" hidden>
+    <div class="modal-box game-success-box" role="document">
+      <div class="success-icon" aria-hidden="true">✓</div>
+      <h2 id="gameSuccessTitle">Obrigado pela sua doação</h2>
+      <p id="gameSuccessText">Sua contribuição ajuda a fazer a diferença.</p>
+      <button class="btn btn-primary" id="gameSuccessButton" type="button">Voltar para o início</button>
+    </div>
+  </div>
+
+  <!-- Modal de confirmação original -->
+  <div class="modal" id="successModal" role="dialog" aria-modal="true" aria-labelledby="successTitle" aria-describedby="successText" hidden>
+    <div class="modal-box success-box" role="document">
+      <div class="success-icon" aria-hidden="true">✓</div>
+      <h2 id="successTitle">Contribuição registrada</h2>
+      <p id="successText">Obrigado por contribuir e ajudar a transformar vidas. Este protótipo não processa pagamentos reais.</p>
+      <button class="btn btn-primary" id="successButton" type="button">Fechar</button>
+    </div>
+  </div>
 
   <script src="script.js"></script>
-
 </body>
 
 </html>
