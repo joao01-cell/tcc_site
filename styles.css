@@ -94,6 +94,157 @@ select:focus-visible {
 }
 
 /* ==============================
+   TELA INICIAL DA ONG
+============================== */
+
+.intro-screen {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 28px;
+  border-top: 3px solid #8149e8;
+  border-bottom: 3px solid #8149e8;
+  background-color: var(--cream);
+  background-image: radial-gradient(#d6ded9 1px, transparent 1px);
+  background-size: 18px 18px;
+}
+
+.intro-card {
+  width: min(100%, 680px);
+  overflow: hidden;
+  border: 1.5px solid var(--black-border);
+  border-radius: 14px;
+  background: rgba(250, 249, 245, 0.96);
+  box-shadow: 0 16px 35px rgba(18, 60, 46, 0.1);
+}
+
+.intro-heading {
+  padding: 20px 42px 12px;
+  text-align: center;
+}
+
+.intro-heading .eyebrow {
+  margin-bottom: 4px;
+  font-size: 0.58rem;
+}
+
+.intro-heading h1 {
+  color: #008c54;
+  font-family: var(--serif);
+  font-size: clamp(2.6rem, 7vw, 4.15rem);
+  line-height: 1;
+  letter-spacing: -0.06em;
+  text-shadow: 3px 3px 0 #b73535;
+}
+
+.intro-heading h1 span {
+  color: #087746;
+}
+
+.intro-description {
+  max-width: 540px;
+  margin: 28px auto 0;
+  color: #111;
+  font-size: 0.82rem;
+  line-height: 1.5;
+  text-align: left;
+}
+
+.intro-content {
+  display: grid;
+  grid-template-columns: 200px minmax(0, 1fr);
+  gap: 45px;
+  align-items: stretch;
+  margin-top: 18px;
+}
+
+.intro-ong-info {
+  padding: 10px 16px 18px;
+  background: var(--mint);
+  color: #111;
+}
+
+.intro-ong-info h2 {
+  margin-bottom: 8px;
+  color: #111;
+  font-family: var(--sans);
+  font-size: 0.9rem;
+}
+
+.intro-ong-info p {
+  margin-top: 8px;
+  font-size: 0.73rem;
+  line-height: 1.47;
+}
+
+.intro-action {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 22px 28px 25px 0;
+  color: #111;
+  font-size: 0.78rem;
+  line-height: 1.45;
+  text-align: center;
+}
+
+.intro-heart {
+  width: 122px;
+  height: 122px;
+  display: grid;
+  place-items: center;
+  margin: 24px auto 22px;
+  border-radius: 50%;
+  background: #a8e8cf;
+  color: #050505;
+  font-size: 6.4rem;
+  line-height: 0.8;
+}
+
+.intro-register-label {
+  margin-bottom: 16px;
+}
+
+.intro-register-button {
+  min-width: 110px;
+  min-height: 36px;
+  padding: 8px 17px;
+  border-radius: 7px;
+  background: #8bd5b5;
+  color: #111;
+  font-size: 0.75rem;
+  font-weight: 700;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.intro-register-button:hover {
+  background: var(--green);
+  color: var(--white);
+  transform: translateY(-2px);
+}
+
+.intro-security {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 22px;
+  color: var(--muted);
+  font-size: 0.65rem;
+}
+
+.shield-icon {
+  width: 24px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  border: 2px solid #08b968;
+  border-radius: 50% 50% 48% 48%;
+  color: #08b968;
+  font-size: 0.9rem;
+  font-weight: 800;
+}
+
+/* ==============================
    HERO EXISTENTE
 ============================== */
 
@@ -903,6 +1054,110 @@ footer button {
 }
 
 /* ==============================
+   ÁREA DE PIX E MODAIS
+============================== */
+
+.pix-donation-layout {
+  display: grid;
+  grid-template-columns: minmax(190px, 0.9fr) minmax(190px, 1fr);
+  align-items: center;
+  gap: 24px;
+  margin-top: 18px;
+  padding: 18px;
+  border-radius: 12px;
+  background: var(--mint);
+}
+
+.pix-visual {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.fake-qr {
+  width: min(190px, 100%);
+  height: auto;
+  margin: 10px auto 12px;
+  padding: 8px;
+  background: var(--white);
+}
+
+.fake-qr rect {
+  shape-rendering: crispEdges;
+}
+
+.demo-pix-key {
+  width: 100%;
+  padding: 8px;
+  overflow-wrap: anywhere;
+  border-radius: 8px;
+  background: var(--white);
+  color: var(--text);
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.pix-demo-label {
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 0.62rem;
+}
+
+.pix-payment-panel {
+  padding: 14px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.pix-payment-panel h3 {
+  margin-bottom: 10px;
+  color: var(--green-dark);
+  font-size: 0.95rem;
+}
+
+.pix-payment-panel label {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--text);
+  font-size: 0.68rem;
+  font-weight: 700;
+}
+
+.pix-payment-panel select {
+  width: 100%;
+  min-height: 36px;
+  padding: 7px 9px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--white);
+  color: var(--text);
+  font-size: 0.72rem;
+}
+
+.pix-payment-error {
+  min-height: 1.2em;
+  margin-top: 7px;
+  color: var(--error);
+  font-size: 0.64rem;
+}
+
+.modal-back {
+  min-height: 34px;
+  margin-top: 10px;
+  padding: 7px 14px;
+  border-radius: 18px;
+  background: transparent;
+  color: var(--green);
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.modal-back:hover {
+  background: var(--green-light);
+}
+
+/* ==============================
    MODAIS
 ============================== */
 
@@ -1094,6 +1349,30 @@ footer button {
 }
 
 @media (max-width: 800px) {
+  .intro-screen {
+    padding: 18px;
+  }
+
+  .intro-heading {
+    padding-right: 24px;
+    padding-left: 24px;
+  }
+
+  .intro-content,
+  .pix-donation-layout {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .intro-action {
+    padding: 22px 24px 28px;
+  }
+
+  .pix-payment-panel {
+    width: min(100%, 320px);
+    margin: 0 auto;
+  }
+
   .hero,
   .categories,
   .food-donation,
@@ -1214,6 +1493,19 @@ footer button {
 }
 
 @media (max-width: 480px) {
+  .intro-heading h1 {
+    font-size: 2.75rem;
+  }
+
+  .intro-description {
+    font-size: 0.75rem;
+  }
+
+  .intro-content {
+    gap: 0;
+  }
+
+
   .hero h1 {
     font-size: 2.4rem;
   }
@@ -1520,6 +1812,30 @@ body.dark-mode .game-field.has-error select {
 }
 
 @media (max-width: 800px) {
+  .intro-screen {
+    padding: 18px;
+  }
+
+  .intro-heading {
+    padding-right: 24px;
+    padding-left: 24px;
+  }
+
+  .intro-content,
+  .pix-donation-layout {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .intro-action {
+    padding: 22px 24px 28px;
+  }
+
+  .pix-payment-panel {
+    width: min(100%, 320px);
+    margin: 0 auto;
+  }
+
   .games-donation {
     padding-right: 22px;
     padding-left: 22px;
@@ -1537,6 +1853,19 @@ body.dark-mode .game-field.has-error select {
 }
 
 @media (max-width: 480px) {
+  .intro-heading h1 {
+    font-size: 2.75rem;
+  }
+
+  .intro-description {
+    font-size: 0.75rem;
+  }
+
+  .intro-content {
+    gap: 0;
+  }
+
+
   .games-card {
     padding: 22px 14px 24px;
   }
@@ -1928,12 +2257,49 @@ body.dark-mode footer {
 }
 
 @media (max-width: 800px) {
+  .intro-screen {
+    padding: 18px;
+  }
+
+  .intro-heading {
+    padding-right: 24px;
+    padding-left: 24px;
+  }
+
+  .intro-content,
+  .pix-donation-layout {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .intro-action {
+    padding: 22px 24px 28px;
+  }
+
+  .pix-payment-panel {
+    width: min(100%, 320px);
+    margin: 0 auto;
+  }
+
   .main-topbar {
     width: min(100% - 44px, 680px);
   }
 }
 
 @media (max-width: 480px) {
+  .intro-heading h1 {
+    font-size: 2.75rem;
+  }
+
+  .intro-description {
+    font-size: 0.75rem;
+  }
+
+  .intro-content {
+    gap: 0;
+  }
+
+
   .auth-card {
     padding: 25px 20px 22px;
   }

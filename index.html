@@ -16,7 +16,37 @@
 <body>
   <a class="skip-link" href="#conteudo">Ir para o conteúdo principal</a>
 
-  <div class="auth-shell" id="authShell" aria-live="polite">
+  <!-- Primeira tela: apresentação da ONG -->
+  <section class="intro-screen" id="introScreen" aria-labelledby="introTitle">
+    <div class="intro-card">
+      <div class="intro-heading">
+        <p class="eyebrow">Uma plataforma para fazer o bem</p>
+        <h1 id="introTitle">Faça o <span>Bem</span></h1>
+        <p class="intro-description">O site “Faça o Bem” é uma plataforma criada para facilitar doações e ajudar pessoas que precisam. Nele, o usuário pode criar uma conta, fazer login e escolher uma forma de contribuição.</p>
+      </div>
+
+      <div class="intro-content">
+        <aside class="intro-ong-info">
+          <h2>Lar Bussocaba</h2>
+          <p>A ONG Lar Bussocaba é uma instituição que ajuda idosos que precisam de cuidados e apoio. Ela oferece alimentação, moradia, higiene e cuidados no dia a dia.</p>
+          <p>No site, é possível realizar doações de alimentos não perecíveis, como arroz, feijão, macarrão e outros produtos. Também há opções para doar jogos interativos, como dominó, baralho, bingo, caça-palavras e jogo da memória.</p>
+        </aside>
+
+        <div class="intro-action">
+          <p>Vire um de nossos doadores.<br>Clique no botão para se cadastrar em nosso site e começar a doar.</p>
+          <div class="intro-heart" aria-hidden="true">♡</div>
+          <p class="intro-register-label">Cadastre-se aqui</p>
+          <button class="intro-register-button" id="beginRegistration" type="button">Cadastre-se</button>
+          <div class="intro-security" aria-label="Doação segura">
+            <span class="shield-icon" aria-hidden="true">✓</span>
+            <span>Doação segura e transparente</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="auth-shell" id="authShell" aria-live="polite" hidden>
     <section class="auth-card" id="registerScreen" aria-labelledby="registerTitle" hidden>
       <div class="auth-header">
         <div class="auth-logo" aria-hidden="true">
@@ -378,6 +408,61 @@
       </div>
 
       <button class="btn btn-primary modal-finish" id="finishDonation" type="button">Confirmar contribuição</button>
+    </div>
+  </div>
+
+  <!-- Modal sobreposto da Área de PIX -->
+  <div class="modal pix-donation-modal" id="pixDonationModal" role="dialog" aria-modal="true" aria-labelledby="pixDonationTitle" hidden>
+    <div class="modal-box pix-donation-box" role="document">
+      <button class="modal-close" id="closePixDonation" type="button" aria-label="Fechar Área de PIX">×</button>
+      <h2 id="pixDonationTitle">Área de PIX</h2>
+      <p>Escolha uma forma de pagamento e confirme sua contribuição.</p>
+
+      <div class="pix-donation-layout">
+        <div class="pix-visual">
+          <p class="pix-visual-title">Escaneie o QR Code ou copie a chave abaixo</p>
+          <svg class="fake-qr" viewBox="0 0 210 210" role="img" aria-label="QR Code fictício para demonstração">
+            <rect width="210" height="210" fill="#fff"/>
+            <g fill="#111">
+              <path d="M8 8h58v58H8zM18 18v38h38V18zM28 28h18v18H28z"/>
+              <path d="M144 8h58v58h-58zM154 18v38h38V18zM164 28h18v18h-18z"/>
+              <path d="M8 144h58v58H8zM18 154v38h38v-38zM28 164h18v18H28z"/>
+              <path d="M82 10h12v12H82zM106 10h12v24h-12zM76 34h18v12H76zM100 46h18v12H100zM124 34h12v24h-12z"/>
+              <path d="M76 70h12v18H76zM94 70h24v12H94zM124 70h12v18h-12zM142 76h18v12h-18zM166 70h12v24h-12z"/>
+              <path d="M76 100h18v12H76zM100 94h12v30h-12zM118 100h24v12h-24zM148 96h12v18h-12zM172 104h24v12h-24z"/>
+              <path d="M76 124h12v24H76zM94 130h24v12H94zM124 124h12v30h-12zM142 130h18v12h-18zM166 124h12v18h-12z"/>
+              <path d="M82 154h18v12H82zM106 148h12v30h-12zM124 166h24v12h-24zM154 148h12v30h-12zM178 154h18v12h-18z"/>
+              <path d="M76 184h24v12H76zM112 184h12v18h-12zM136 184h12v12h-12zM172 178h24v18h-24z"/>
+            </g>
+          </svg>
+          <p class="demo-pix-key">doacao.facobem@exemplo.com</p>
+          <p class="pix-demo-label">Chave PIX fictícia para demonstração.</p>
+        </div>
+
+        <div class="pix-payment-panel">
+          <h3>Forma de pagamento</h3>
+          <label for="pixPaymentMethod">Selecione uma opção</label>
+          <select id="pixPaymentMethod">
+            <option value="">Escolha uma forma</option>
+            <option value="PIX">PIX</option>
+            <option value="Cartão">Cartão</option>
+            <option value="Dinheiro">Dinheiro</option>
+          </select>
+          <p class="pix-payment-error" id="pixPaymentError" role="alert" aria-live="assertive"></p>
+          <button class="btn btn-primary" id="pixConfirmButton" type="button">Confirmar</button>
+          <button class="modal-back" id="pixBackButton" type="button">Voltar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tela de agradecimento da Área de PIX -->
+  <div class="modal" id="pixThankYouModal" role="dialog" aria-modal="true" aria-labelledby="pixThankYouTitle" hidden>
+    <div class="modal-box success-box" role="document">
+      <div class="success-icon" aria-hidden="true">✓</div>
+      <h2 id="pixThankYouTitle">Obrigado pela sua doação!</h2>
+      <p>Sua contribuição foi registrada com sucesso. Este QR Code é fictício e serve apenas para demonstração.</p>
+      <button class="btn btn-primary" id="pixThankYouButton" type="button">Voltar à página principal</button>
     </div>
   </div>
 

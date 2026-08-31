@@ -2,6 +2,8 @@
 
 // Fluxo de autenticação local para o protótipo.
 (() => {
+  const introScreen = document.getElementById("introScreen");
+  const beginRegistrationButton = document.getElementById("beginRegistration");
   const authShell = document.getElementById("authShell");
   const registerScreen = document.getElementById("registerScreen");
   const loginScreen = document.getElementById("loginScreen");
@@ -89,6 +91,7 @@
   }
 
   function revealMainPage() {
+    introScreen.hidden = true;
     authShell.hidden = true;
     mainContent.hidden = false;
     footer.hidden = false;
@@ -228,6 +231,12 @@
   showLoginButton?.addEventListener("click", () => showAuthScreen("login"));
   showRegisterButton?.addEventListener("click", () => showAuthScreen("register"));
 
+  beginRegistrationButton?.addEventListener("click", () => {
+    introScreen.hidden = true;
+    authShell.hidden = false;
+    showAuthScreen("register");
+  });
+
   const savedTheme = readStorage(THEME_KEY) || "light";
   applyTheme(savedTheme);
   themeToggle?.addEventListener("click", () => {
@@ -236,10 +245,13 @@
     writeStorage(THEME_KEY, nextTheme);
   });
 
-  // O login sempre aparece primeiro ao abrir ou recarregar o site.
-  // A conta salva continua disponível para validar o acesso, mas a sessão não é restaurada automaticamente.
+  // A apresentação da ONG é sempre a primeira etapa do fluxo.
+  // O usuário só acessa o cadastro depois de clicar em “Cadastre-se”.
   removeStorage(SESSION_KEY);
-  showAuthScreen("login");
+  introScreen.hidden = false;
+  authShell.hidden = true;
+  mainContent.hidden = true;
+  footer.hidden = true;
 })();
 
 (() => {
@@ -247,6 +259,8 @@
   const successModal = document.getElementById("successModal");
   const foodSuccessModal = document.getElementById("foodSuccessModal");
   const foodFormModal = document.getElementById("foodFormModal");
+  const pixDonationModal = document.getElementById("pixDonationModal");
+  const pixThankYouModal = document.getElementById("pixThankYouModal");
   const gameSuccessModal = document.getElementById("gameSuccessModal");
   const modalTitle = document.getElementById("modalTitle");
   const modalText = document.getElementById("modalText");
@@ -258,8 +272,14 @@
   const successButton = document.getElementById("successButton");
   const returnHomeButton = document.getElementById("returnHomeButton");
   const gameSuccessButton = document.getElementById("gameSuccessButton");
+  const closePixDonationButton = document.getElementById("closePixDonation");
+  const pixBackButton = document.getElementById("pixBackButton");
+  const pixConfirmButton = document.getElementById("pixConfirmButton");
+  const pixThankYouButton = document.getElementById("pixThankYouButton");
+  const pixPaymentMethod = document.getElementById("pixPaymentMethod");
+  const pixPaymentError = document.getElementById("pixPaymentError");
   const categories = [...document.querySelectorAll(".category-card")];
-  const overlays = [modal, foodFormModal, successModal, foodSuccessModal, gameSuccessModal].filter(Boolean);
+  const overlays = [modal, foodFormModal, successModal, foodSuccessModal, gameSuccessModal, pixDonationModal, pixThankYouModal].filter(Boolean);
   let lastFocusedElement = null;
   let foodDonationCompleted = false;
 
@@ -304,6 +324,14 @@
     lastFocusedElement = document.getElementById("openFoodDonationButton");
     setModalVisibility(foodFormModal, true);
     document.getElementById("product")?.focus();
+  }
+
+  function openPixDonation() {
+    lastFocusedElement = document.activeElement;
+    if (pixPaymentMethod) pixPaymentMethod.value = "";
+    if (pixPaymentError) pixPaymentError.textContent = "";
+    setModalVisibility(pixDonationModal, true);
+    pixPaymentMethod?.focus();
   }
 
   function updateCategorySelection(selectedCard) {
@@ -490,7 +518,10 @@
   });
 
   categories.forEach((card) => {
-    card.addEventListener("click", () => updateCategorySelection(card));
+    card.addEventListener("click", () => {
+      updateCategorySelection(card);
+      if (card.dataset.cause === "PIX") openPixDonation();
+    });
   });
 
   document.querySelectorAll(".org-button").forEach((button) => {
@@ -518,12 +549,7 @@
     });
   });
 
-  document.getElementById("donationButton")?.addEventListener("click", () => {
-    openModal(
-      "Faça uma doação",
-      "Sua contribuição ajuda a transformar vidas. Copie a chave PIX abaixo para realizar a transferência."
-    );
-  });
+  document.getElementById("donationButton")?.addEventListener("click", openPixDonation);
 
   document.getElementById("foodHelpButton")?.addEventListener("click", () => {
     openModal(
@@ -566,6 +592,27 @@
 
   closeModalButton?.addEventListener("click", () => closeModal(modal));
   successButton?.addEventListener("click", () => closeModal(successModal));
+  closePixDonationButton?.addEventListener("click", () => closeModal(pixDonationModal));
+  pixBackButton?.addEventListener("click", () => closeModal(pixDonationModal));
+
+  pixConfirmButton?.addEventListener("click", () => {
+    if (!pixPaymentMethod?.value) {
+      if (pixPaymentError) pixPaymentError.textContent = "Selecione uma forma de pagamento antes de confirmar.";
+      pixPaymentMethod?.focus();
+      return;
+    }
+
+    if (pixPaymentError) pixPaymentError.textContent = "";
+    closeModal(pixDonationModal, false);
+    setModalVisibility(pixThankYouModal, true);
+    pixThankYouButton?.focus();
+  });
+
+  pixThankYouButton?.addEventListener("click", () => {
+    closeModal(pixThankYouModal, false);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    document.getElementById("inicio")?.focus({ preventScroll: true });
+  });
 
   finishDonationButton?.addEventListener("click", () => {
     closeModal(modal, false);
